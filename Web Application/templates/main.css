@@ -1,0 +1,49 @@
+header {
+    background-color: whitesmoke;
+    margin-left: 0%;
+    border-radius: 5px;
+  }
+
+  .list1 {
+    color: whitesmoke !important;
+    display: inline-block;
+    margin: 1%;
+    padding: 10px;
+    border-radius: 8px;
+    /* background-color: black; */
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  .unorder {
+    /* margin-left: 870px; */
+    padding: 10px;
+  }
+
+  .head {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 60px;
+  }
+
+  body {
+    background-color: hwb(353 31% 53%);
+    padding: 20px;
+  }
+
+  .para {
+    color: white;
+    font-size: 30px;
+    padding: 50px;
+  }
+  .list1:hover {
+    background-color: hwb(353 77% 16%);
+    color: whitesmoke !important;
+  }
+
+
+
+
+
+
+

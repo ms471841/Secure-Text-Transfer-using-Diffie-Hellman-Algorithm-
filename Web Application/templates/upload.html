@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+
+    <!-- jQuery library -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+    <!-- Character encoding scheme -->
+    <meta charset="UTF-8" />
+    <title>UPLOAD FILE</title>
+    <link
+      rel="icon"
+      href="https://image.flaticon.com/icons/png/512/30/30706.png"
+      type="image/x-icon"
+    />
+    <style type="text/css">
+      /*----------multi-level-accordian-menu------------*/
+
+      .btn-lg {
+        font-weight: bold;
+        background-color: rgb(28, 202, 28);
+        height: 30px;
+        width: 90px;
+        color: rgb(255, 252, 252);
+        border-color: white;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .custom-file-upload {
+        display: inline-block;
+        padding: 0.35em 1.2em;
+        border: 0.1em solid #ffffff;
+        margin: 0 0.3em 0.3em 0;
+        border-radius: 0.12em;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 300;
+        font-size: 25px;
+        color: #ffffff;
+        text-align: center;
+        transition: all 0.2s;
+
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+
+      .custom-file-upload:hover {
+        color: #000000;
+        background-color: #ffffff;
+      }
+      header {
+        background-color: whitesmoke;
+        margin-left: 0%;
+        border-radius: 5px;
+      }
+
+      .list1 {
+        color: whitesmoke !important;
+        display: inline-block;
+        margin: 1%;
+        padding: 10px;
+        border-radius: 8px;
+        /* background-color: black; */
+        font-weight: bold;
+        font-size: 25px;
+      }
+
+      .unorder {
+        /* margin-left: 870px; */
+        padding: 10px;
+      }
+
+      .head {
+        color: whitesmoke;
+        text-align: center;
+        font-size: 60px;
+      }
+
+      body {
+        background-color: hwb(353 31% 53%);
+        padding: 20px;
+      }
+
+      .para {
+        color: white;
+        font-size: 30px;
+        padding: 50px;
+      }
+      .list1:hover {
+        background-color: hwb(353 77% 16%);
+        color: whitesmoke !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <ul class="unorder">
+        <li class="list1"><a href="/home">HOME</a></li>
+        <li class="list1"><a href="/upload">UPLOAD FILE</a></li>
+        <li class="list1"><a href="">FILE DIRECTORY</a></li>
+        <li class="list1"><a href="">DOWNLOAD PUBLIC KEY</a></li>
+        <li class="list1"><a href="/register">REGISTER</a></li>
+      </ul>
+    </header>
+
+    <center style="padding: 40px">
+      <div class="container" style="font-size: 25px">
+        <br /><br />
+        <h3
+          style="font-family: 'Times New Roman', Times, serif; font-size: 50px"
+        >
+          Select the file you wish to upload to the cloud.<br />
+        </h3>
+      </div>
+      <br />
+      <br />
+      <h3
+        style="
+          font-family: 'Times New Roman', Times, serif;
+          color: rgb(251, 255, 2);
+        "
+      >
+        Make sure that the file has been encrypted using the GUI (Graphical User
+        Interface).
+      </h3>
+      <br /><br />
+      <form action="/data" method="POST" enctype="multipart/form-data">
+        <!--<input type = "file" name = "file" required>-->
+        <input
+          id="file-upload"
+          name="file"
+          type="file"
+          onchange="return fileValidation()"
+          required
+        />
+
+        <label for="file-upload" class="custom-file-upload">
+          <!--<input type="file" name="file" required/>-->
+          <i class="fa fa-cloud-upload"></i> Upload Text File </label
+        ><br /><label
+          style="
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 300;
+            font-size: 20px;
+            color: #ffffff;
+          "
+          >Extensions allowed: .txt </label
+        ><br />
+        <label
+          id="file-name"
+          style="
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 300;
+            font-size: 25px;
+            color: #ffffff;
+          "
+        ></label>
+        <script>
+          function fileValidation() {
+            var fileInput = document.getElementById("file-upload");
+
+            var filePath = fileInput.value;
+
+            // Allowing file type
+            var allowedExtensions = /(\.txt)$/i;
+
+            if (!allowedExtensions.exec(filePath)) {
+              alert("Invalid file type");
+              fileInput.value = "";
+              return false;
+            }
+          }
+
+          var input = document.getElementById("file-upload");
+          var infoArea = document.getElementById("file-name");
+
+          input.addEventListener("change", showFileName);
+
+          function showFileName(event) {
+            // the change event gives us the input it occurred in
+            var input = event.srcElement;
+
+            // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
+            var fileName = input.files[0].name;
+
+            // use fileName however fits your app best, i.e. add it into a div
+            infoArea.textContent = "File name: " + fileName;
+          }
+        </script>
+
+        <br /><br />
+        <input type="submit" class="btn btn-info btn-lg" value="SUBMIT" />
+      </form>
+      <br />
+    </center>
+  </body>
+</html>
